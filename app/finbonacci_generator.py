@@ -1,14 +1,9 @@
 class FibonacciGenerator:
 
-    def __init__(self, count: int = 0, prev: int = 0, curr: int = 1):
-        self.count = count
-        self.prev = prev
-        self.curr = curr
+    def __init__(self, curr_v: int = 0, next_v: int = 1):
+        self.curr_v = curr_v
+        self.next_v = next_v
 
     def __next__(self):
-        self.count += 1
-        self.prev, self.curr = self.curr, self.prev + self.curr
-        return {'count': self.count, 'prev': self.prev, 'curr': self.curr}
-
-    next = __next__
-    set_state = __init__
+        self.curr_v, self.next_v = self.next_v, self.curr_v + self.next_v
+        return self.curr_v, self.next_v

@@ -1,8 +1,9 @@
 from typing import List, Optional
 
-from fastapi import FastAPI, Request, Path, HTTPException, status
+from fastapi import FastAPI, Request, Query, HTTPException, status
 
 from app.logger import logger
+from app.fibonacci_array import build_fibonacci_array
 
 app = FastAPI(title="File storage")
 
@@ -13,19 +14,14 @@ async def storage_setup_at_startup():
     logger.info('Fibonacci storage inited')
 
 
-def build_fibonacci_array(start_from):
-    pass
-
-
 @app.get('/fibonacci', response_model=List[int])
-def fibonacci_api(request: Request, start_from: int = Path(..., ge=0), to: int = Path(..., ge=0)):
+def fibonacci_api(request: Request, start_from: int = Query(..., ge=0), to: int = Query(..., ge=0)):
     if start_from > to:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, detail='"to" parameter must be greater than "start_from"'
         )
     fibonacci_storage = request.app.state.fibonacci_storage
-
-    return []
+    return build_fibonacci_array(fibonacci_storage, start_from, to)
 
 
 if __name__ == '__main__':
