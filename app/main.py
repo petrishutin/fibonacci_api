@@ -7,7 +7,7 @@ from app.settings import config
 from app.fibonacci_array import build_fibonacci_array
 from app.redis_adapter import RedisAdapter
 
-app = FastAPI(title="File storage")
+app = FastAPI(title="Fibonacci API", description='Resource provides arrays of fibonacci numbers')
 
 
 @app.on_event("startup")

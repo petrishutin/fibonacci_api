@@ -6,6 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
     command: [ "/bin/bash", "/wait-for-it.sh", "redis:6379", "--", "/entrypoint.sh" ]
+    environment:
+      - REDIS_HOST='redis'
     ports:
       - "8000:8000"
     depends_on:
