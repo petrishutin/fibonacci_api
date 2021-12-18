@@ -9,3 +9,6 @@ class FibonacciGenerator:
         self.count += 1
         self.prev, self.curr = self.curr, self.prev + self.curr
         return {'count': self.count, 'prev': self.prev, 'curr': self.curr}
+
+    next = __next__
+    set_state = __init__
