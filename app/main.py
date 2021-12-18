@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List
 
 from fastapi import FastAPI, Request, Query, HTTPException, status
 
@@ -22,9 +22,3 @@ def fibonacci_api(request: Request, start_from: int = Query(..., ge=0), to: int 
         )
     fibonacci_storage = request.app.state.fibonacci_storage
     return build_fibonacci_array(fibonacci_storage, start_from, to)
-
-
-if __name__ == '__main__':
-    import uvicorn
-
-    uvicorn.run(app)

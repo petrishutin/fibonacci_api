@@ -4,3 +4,5 @@ pydantic[dotenv]
 pytest
 redis
 requests
+flake8
+flake8-print

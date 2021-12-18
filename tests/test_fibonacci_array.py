@@ -22,15 +22,7 @@ def test_fill_not_empty_storage():
     assert fibonacci_storage == {0: (0, 1), 1: (1, 1), 2: (1, 2), 3: (2, 3)}
 
 
-@pytest.mark.parametrize(
-    "args, results",
-    (
-            ([0, 0], [0]),
-            ([0, 1], [0, 1]),
-            ([0, 2], [0, 1, 1]),
-            ([1, 3], [1, 1, 2])
-    )
-)
-def test_fibonacci_array(args, results):
+def test_fibonacci_array(fib_params):
+    args, results = fib_params
     fibonacci_storage = dict()
     assert build_fibonacci_array(fibonacci_storage, *args) == results

@@ -8,13 +8,13 @@ log_config = {
     "formatters": {
         "default": {
             "()": "uvicorn.logging.DefaultFormatter",
-            "fmt": f'[%(asctime)s %(levelprefix)s %(pathname)s %(funcName)s] - %(message)s',
+            "fmt": '[%(asctime)s %(levelprefix)s %(pathname)s %(funcName)s] - %(message)s',
             "datefmt": "%Y-%m-%d %H:%M:%S",
             "use_colors": True
         },
         "access": {
             "()": "uvicorn.logging.AccessFormatter",
-            "fmt": f'[%(asctime)s %(levelprefix)s - "%(request_line)s" %(status_code)s',
+            "fmt": '[%(asctime)s %(levelprefix)s - "%(request_line)s" %(status_code)s',
             "use_colors": True
         },
     },
